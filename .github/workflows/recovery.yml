@@ -57,10 +57,6 @@ jobs:
               cd work
               . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
        
-       - name: upload
-        run: |
-              curl -s --upload-file work/out/target/product/*/*.zip  https://transfer.sh/ && echo""
-  
        - uses: actions/upload-artifact@v2
          with:
           name: recoveryzip
