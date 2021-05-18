@@ -46,21 +46,21 @@ jobs:
             
        - name: Sync recovery source and device tree
          run: |
-             mkdir pb
-             cd pb
+             mkdir ~/pb
+             cd ~/pb
              repo init --depth=1 -u git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-6.0 
              repo sync -j4
              git clone https://github.com/noob-eng/PGN528.git device/condor/PGN528
              
        - name: Build
          run: |
-              cd work
+              cd ~/pb
               . build/envsetup.sh &&lunch omni_PGN528-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka recoveryimage
        
        - uses: actions/upload-artifact@v2
          with:
           name: recoveryzip
-          path: pb/out/target/product/*/*.zip
+          path: ~/pb/out/target/product/*/*.zip
 
        - uses: actions/upload-artifact@v2
          with:
