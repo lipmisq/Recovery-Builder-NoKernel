@@ -10,8 +10,14 @@ on:
 #      - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-  watch:
-    types: [started]
+#  watch:
+#    types: [started]
+
+on:
+  push:
+    branches: [ main ]
+    paths: '.github/workflows/recovery.yml'
+  workflow_dispatch:
 
 env:
   MANIFEST: repo init --depth=1 -u git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-6.0
