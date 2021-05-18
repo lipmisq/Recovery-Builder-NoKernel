@@ -19,7 +19,7 @@ env:
   DT_LINK: https://github.com/noob-eng/PGN528.git
   DT_PATH: device/condor/PGN528
   TARGET: recoveryimage
-  TZ: Afrika/Algiers
+  TZ: Asia/Kolkata
 
 jobs:
   build:
