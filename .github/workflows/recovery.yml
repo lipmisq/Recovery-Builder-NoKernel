@@ -18,13 +18,13 @@ on:
     paths: '.github/workflows/recovery.yml'
   workflow_dispatch:
 
-env:
-  MANIFEST: repo init --depth=1 -u git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-6.0
-  DEVICE: PFN528
-  DT_LINK: https://github.com/noob-eng/PGN528.git
-  DT_PATH: device/condor/PGN528
-  TARGET: recoveryimage
-  TZ: Asia/Kolkata
+#env:
+ # MANIFEST: repo init --depth=1 -u git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-6.0
+#  DEVICE: PFN528
+#  DT_LINK: https://github.com/noob-eng/PGN528.git
+#  DT_PATH: device/condor/PGN528
+#  TARGET: recoveryimage
+#  TZ: Asia/Kolkata
 
 jobs:
   build:
@@ -48,14 +48,14 @@ jobs:
          run: |
              mkdir pb
              cd pb
-             repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
+             repo init -u repo init --depth=1 -u git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-6.0 
              repo sync -j4
-             git clone $DT_LINK --depth=1 --single-branch $DT_PATH
+             git clone https://github.com/noob-eng/PGN528.git device/condor/PGN528
              
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+              . build/envsetup.sh &&lunch omni_PGN528-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka recoveryimage
        
        - uses: actions/upload-artifact@v2
          with:
