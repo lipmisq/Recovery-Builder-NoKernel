@@ -48,7 +48,7 @@ jobs:
          run: |
              mkdir pb
              cd pb
-             repo init -u repo init --depth=1 -u git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-6.0 
+             repo init --depth=1 -u git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-6.0 
              repo sync -j4
              git clone https://github.com/noob-eng/PGN528.git device/condor/PGN528
              
